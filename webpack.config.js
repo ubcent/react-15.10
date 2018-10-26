@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, 'src', 'index.js'),
+    main: path.resolve(__dirname, 'src', 'index.js')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -16,14 +16,14 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         }
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader'],
+          use: ['css-loader', 'sass-loader'],
         })
       }
     ]
@@ -31,8 +31,8 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin({ filename: 'style.css' }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html'),
+      template:path.resolve(__dirname, 'src', 'index.html'),
       filename: 'index.html',
     })
   ]
-}
+};
