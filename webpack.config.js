@@ -16,7 +16,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         }
       },
       {
@@ -29,10 +29,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({ filename: 'style.css' }),
+    new ExtractTextPlugin({filename:'style.css'}),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
-      filename: 'index.html',
+      filename:'index.html'
     })
   ]
 }

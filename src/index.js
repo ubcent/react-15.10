@@ -1,4 +1,4 @@
-import Human from './user';
+import {devFIO} from './devFIO.js';
 
-const h = new Human('Dmitry', 'Bondarchuk');
-alert(h.sayHi());
+let fio = new devFIO ('Dyachenko','Ivan','Vladimirovich');
+fio.outputFIO();
