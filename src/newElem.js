@@ -1,11 +1,13 @@
 import $ from 'jquery';
 
-// window.onload = () => {
-//   let elem = document.getElementsByClassName('circle');
-//   console.log(elem);
-//   elem.
-//   elem.classList.add('newclass');
-// }
+window.onload = () => {
+  let elem = document.querySelector('.circle');
+  elem.addEventListener('click', ()=>{
+    let curentdate = new Date();
+    console.log(curentdate);
+  })
+
+}
 
 
 
