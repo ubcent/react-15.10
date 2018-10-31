@@ -23,9 +23,9 @@ export default class Menu extends Component {
     const {title, items} = this.props;
     return (
       <Fragment>
-        <h3>{title}</h3>
+        <b>{title}</b>
         <ul className="menu">
-          {items.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+          {items.map((item) => <li className='punkt'><a href={item.href}>{item.title}</a></li>)}
         </ul>
       </Fragment>
     )
