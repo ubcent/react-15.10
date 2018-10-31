@@ -7,7 +7,7 @@ import Container from './components/Container';
 import Login from './components/Login';
 import Content from './components/Content';
 import ProjectInfo from './components/ProjectInfo';
-import ClickDate from './components/ClickDate';
+//import ClickDate from './components/ClickDate';
 
 const items = [
   { href: '/', title: 'Home' },  { href: '/news', title: 'News' },  { href: '/blog', title: 'Blog' },
@@ -30,7 +30,8 @@ class App extends Component {
     return (
       <div className="box">
         <Container>
-          <div className="divcontent col-md-8" ><ProjectInfo items={fio}  /></div><div className="divcontent col-md-4" ><ClickDate  title="ClickDate"/></div>
+          <div className="divcontent col-md-8" ><ProjectInfo items={fio}  /></div>
+		  <div className="divcontent col-md-4" ></div>
           <Menu items={items} title="Main menu" />		  
 		  <div className="contentall">
 		  <div className="divcontent col-md-8" ><Content /></div>
