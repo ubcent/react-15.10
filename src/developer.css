@@ -1,0 +1,16 @@
+.developer_wrap {
+    border: 6px groove darkgreen;
+    background-color: #cccccc;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 1em 2em;
+}
+.developer_wrap > span {
+    color: #555555;
+}
