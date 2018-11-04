@@ -7,7 +7,6 @@ import Container from './components/Container';
 import Login from './components/Login';
 import Content from './components/Content';
 import ProjectInfo from './components/ProjectInfo';
-//import ClickDate from './components/ClickDate';
 
 const items = [
   { href: '/', title: 'Home' },  { href: '/news', title: 'News' },  { href: '/blog', title: 'Blog' },
