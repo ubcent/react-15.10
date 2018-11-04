@@ -1,7 +1,4 @@
-// import './Menu.scss';
-
 import React, { Component, Fragment } from 'react';
-import $ from 'jquery';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
 
@@ -9,7 +6,7 @@ export default class Modal extends Component {
 
   state = {
     isShow: true
-  }
+  };
  
   render() {
     const modal = <div className="modal fade" id="myModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -29,7 +26,7 @@ export default class Modal extends Component {
             </div>
             <div className="form-group">
               <label for="message-text" className="col-form-label">Password:</label>
-              <textarea className="form-control" id="message-text"></textarea>
+              <input type="text" className="form-control" id="recipient-name" />
             </div>
           </form>
         </div>
@@ -41,7 +38,7 @@ export default class Modal extends Component {
     </div>
     </div>
 
-    const modalWindow = this.state.isShow && modal
+    const modalWindow = this.state.isShow && modal;
     return (
       <Fragment>
         <button onClick={this.handleClick} type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Log in</button>
