@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #blog, .box {
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 110px;
+  background-color: #076ca3;
+}
+
+.content {
+  padding-top: 30px;
+}
+
+.content>p {
+  text-align: center;
+  font-size: 3em;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: -110px;
+  background-color: #076ca3;
+  height: 110px;
+}

@@ -1,0 +1,7 @@
+.dev {
+  display: inline-block;
+  padding: 10px;
+  background-color: #2478f7;
+  border-radius: 25px;
+  cursor: pointer;
+}
