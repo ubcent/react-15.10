@@ -1,5 +1,3 @@
-'use strict';
-
 import './Developer.scss';
 
 export default class Index {

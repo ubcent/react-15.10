@@ -1,5 +1,3 @@
-'use strict';
-
 import './TimeButton.scss';
 
 export default class Index {

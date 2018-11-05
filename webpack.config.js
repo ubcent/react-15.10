@@ -1,12 +1,10 @@
-'use strict';
-
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, 'src', 'index.js'),
+    main: path.resolve(__dirname, 'src', 'index.jsx'),
   },
 
   output: {
@@ -14,10 +12,14 @@ module.exports = {
     filename: 'bundle.js',
   },
 
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
