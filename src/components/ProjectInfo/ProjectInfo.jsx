@@ -12,12 +12,12 @@ export default class ProjectInfo extends Component {
   render() {
     const {title, items} = this.props;
     return (
-      <div>
-        <b>{title}</b>
-        <ul className="ProjectInfo">
-          {items.map((item) => <li>{item.family} {item.name} {item.secondfamily}</li>)}
-        </ul>
-      </div>
+    <div>
+      <b>{title}</b>
+      <ul className='ProjectInfo'>
+      {items.map((item) => <li>{item.family} {item.name} {item.secondfamily}</li>)}
+     </ul>
+    </div>
     )
   }
 }
