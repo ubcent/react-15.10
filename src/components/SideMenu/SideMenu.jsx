@@ -23,8 +23,8 @@ export default class SideMenu extends Component {
     return (
       <div>
         <b>{title}</b>
-        <ul className="sidemenu">
-          {items.map((item) => <li className='spunkt'><a href={item.href}>{item.title}</a></li>)}
+        <ul className='sidemenu'>
+          {items.map((item) => <li className="spunkt"><a href={item.href}>{item.title}</a></li>)}
         </ul>
       </div>
     )
