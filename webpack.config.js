@@ -33,9 +33,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-   
-    new BootstrapPlugin = ({filename: 'bootstrap.css' });
+  plugins: [    
     new ExtractTextPlugin({ filename: 'style.css' }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
