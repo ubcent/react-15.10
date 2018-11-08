@@ -11,7 +11,7 @@ import Container from './components/Container';
 import Content from './components/Content';
 import Menu from './components/Menu';
 import Categories from './components/Categories';
-import Mymodal from './components/Modal';
+import Mymodal from './components/Mymodal';
 
 class Layout extends Component {
   
