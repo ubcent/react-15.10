@@ -1,6 +1,5 @@
 export default [
     { href: '/', title: 'Home' },
-    { href: '/news', title: 'News' },
-    { href: '/blog', title: 'Blog' },
+    { href: '/top_articles', title: 'Top articles' },
     { href: '/about', title: 'About' },
   ]
