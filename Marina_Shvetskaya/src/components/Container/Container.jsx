@@ -7,7 +7,7 @@ export default class Container extends Component {
       <div className="container">
           {children}
       </div>
-     
     )
   }
 }
+
