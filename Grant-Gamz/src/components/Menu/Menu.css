@@ -1,0 +1,19 @@
+.menu {
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  width: auto;
+  background-color: #a79f9f;
+  margin-top: 35px;
+}
+
+.punkt {	
+    background-color: #b9c7c7;
+}
+
+ ul li {
+    display: inline; 
+    margin-right: 5px; 
+    border: 2px solid #869e9e;
+    padding: 15px;
+   }
