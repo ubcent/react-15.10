@@ -6,7 +6,7 @@ export default class ContentField extends Component {
     const {items} = this.props;
     return(
       <div className='contentfield'>
-        {items.map((item) => <div className='content_item'>{item.title}</div>)}
+        {items.map((item, idx) => <div key={idx} className='content_item'>{item.title}</div>)}
         
       </div>
     )
