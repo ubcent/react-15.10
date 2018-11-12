@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
-import Menu from './components/Menu';
+import Menu from 'components/Menu';
 import Container from './components/Container';
 import List from './components/List';
 import Counter from './components/Counter';
 import CommentForm from './components/CommentForm';
+import Timer from './components/Timer';
+import CommentsContainer from 'containers/CommentsContainer';
 
 const items = [
   { href: '/', title: 'Home' },
@@ -37,7 +39,7 @@ class App extends Component {
   }
 
   handleOpen = (e) => {
-    this.setState({ isModal: true });
+    this.setState({ isModal: !this.state.isModal });
   }
 
   render() {
@@ -45,19 +47,7 @@ class App extends Component {
 
     return (
       <div className="box">
-        <Container>
-          <Menu items={items} title="Main menu" />
-          Hello world!
-          <Menu items={items1} title="Just another menu" />
-          <List items={['MongodDB', 'RethinkDB', 'MySQL']} />
-          <Counter /><br/>
-          <ul>
-            {comments.map((comment, idx) => <li key={idx}>{comment.author}: {comment.message}</li>)}
-          </ul>
-          <CommentForm onSend={this.handleComment} />
-          {isModal && <div>Modal</div>}
-          <button onClick={this.handleOpen}>Open Modal</button>
-        </Container>
+        <CommentsContainer />
       </div>
     )
   }
