@@ -3,9 +3,10 @@ import ReactDom from 'react-dom';
 
 import './layout.css';
 
-import Menu from './components/Menu/Menu'
-import Login from './components/Login/Login'
-import MenuFooter from './components/MenuFooter/MenuFooter'
+import Menu from './components/Menu/Menu';
+import Login from './components/Login/Login';
+import MenuFooter from './components/MenuFooter/MenuFooter';
+import LoginForm from './components/LoginForm/LoginForm';
 
 const menuItems = [
   { href: '/', title: 'Home' },
@@ -22,13 +23,31 @@ const menuFooterItems = [
 ]
 
 class Layout extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isModal: false,
+    }
+  }
+
+  handleModal = () => {
+    if(this.state.isModal === false) {
+    this.setState({ isModal: true });
+    } else {
+      this.setState({ isModal: false });
+    }
+  }
+
   render() {
+    const {isModal} = this.state;
     return (
       <Fragment>
         <div className="box">
         <div className="header">
           <Menu items={menuItems} />
-          <Login />
+          {isModal && <LoginForm />}
+          <button className="login" onClick={this.handleModal}>ВХОД</button>
         </div>
         <div className="content">
         <p>Где-то здесь контент...</p>
