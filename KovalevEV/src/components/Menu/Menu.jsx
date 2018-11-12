@@ -16,7 +16,7 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
-import LoginForm from "../LoginForm/LoginForm";
+import LoginForm from '../LoginForm/LoginForm';
 
 export default class Menu extends Component {
     constructor(props) {
