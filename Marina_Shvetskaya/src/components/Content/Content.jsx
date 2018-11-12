@@ -1,17 +1,17 @@
 import './Content.scss';
 
-import React, { Component } from 'react';
-import Article from '.././Article';
-import articles from '../../source/article.jsx';
+import React from 'react';
+import Article from '../Article';
 
 
-export default class Content extends Component {
-  render() {
-    const elem = articles.map((article) => <li key = {article.id}><Article article = {article}/></li>)
-    return (
-      <ul className="col-md-10">
-        {elem}
-      </ul>
-    )
-  }
+export default function Content({articles}) {
+  const elem = articles.map((article =>
+    <li key = {article.id}>
+      <Article article = {article} defaultOpen = {article.id === 1}/>
+    </li>));
+  return (
+    <ul className="col-8">
+      {elem}
+    </ul>
+  )
 }
