@@ -9,9 +9,10 @@ html, body, #blog, .box {
 
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 110px;
+  padding: 0 100px;
   background-color: #076ca3;
 }
 
@@ -31,4 +32,22 @@ html, body, #blog, .box {
   margin-top: -110px;
   background-color: #076ca3;
   height: 110px;
+}
+
+.login {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #6ecf18;
+  background-color: #300c46;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  height: 100px;
+  width: 100px;
+}
+
+.login:active {
+  color: #300c46;
+  background-color: #6ecf18;
 }

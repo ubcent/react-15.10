@@ -22,7 +22,7 @@ export default class Menu extends Component {
     return(
       <Fragment>
         <ul className="menu">
-          {items.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+          {items.map((item, idx) => <li key={idx}><a href={item.href}>{item.title}</a></li>)}
         </ul>
       </Fragment>
     )
