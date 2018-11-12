@@ -1,0 +1,33 @@
+.menu {
+  font-style: italic;
+  font-size: 25px;
+  color: rgb(226, 43, 43);
+  list-style: none;
+  width: 100px;
+}
+
+.menu :visited {
+  color: rgb(226, 43, 43);
+}
+
+.menu :hover {
+  color: rgb(224, 146, 0);
+  font-weight: 100;
+}
+
+.menu a {
+  text-decoration: none;
+  color: rgb(226, 43, 43);
+}
+
+.menu li {
+  width: 100px;
+}
+
+h2 {
+  font-style: italic;
+  color: rgb(226, 43, 43);
+  width: 200px;
+  font-weight: bold;
+  padding-left: 40px;
+}

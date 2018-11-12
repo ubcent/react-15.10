@@ -1,0 +1,24 @@
+.loginDiv{
+  margin: 0 auto 50px auto;
+  display: flex;
+  justify-content: center;
+}
+input {
+  border: solid 1px rgb(226, 43, 43);
+}
+
+input :focus {
+  outline-color: rgb(224, 146, 0);
+}
+
+button {
+  border: solid 1px rgb(226, 43, 43);
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background-color: rgb(226, 43, 43);
+}
+
+button :active {
+  color: black;
+  background-color: rgb(224, 146, 0);
+}
