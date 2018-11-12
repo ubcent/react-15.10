@@ -45,7 +45,7 @@ export default class Menu extends Component {
     }
 
     static defaultProps = {
-        logo: "MyApp",
+        logo: 'MyApp',
         items: [],
         id: null,
     }
