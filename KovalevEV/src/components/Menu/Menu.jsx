@@ -30,7 +30,7 @@ export default class Menu extends Component {
 
     toggle() {
         this.setState({
-            isOpen: !this.state.isOpen
+            isOpen: !this.state.isOpen,
         });
     }
 
