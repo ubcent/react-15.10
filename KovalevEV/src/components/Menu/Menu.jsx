@@ -1,31 +1,73 @@
 import './Menu.css';
 
-import React, { Component, Fragment } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
+} from 'reactstrap';
+import LoginForm from "../LoginForm/LoginForm";
+
 export default class Menu extends Component {
+    constructor(props) {
+        super(props);
+
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            isOpen: false
+        };
+    }
+
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
     static propTypes = {
-        title: PropTypes.string,
+        id: PropTypes.string.isRequired,
+        logo: PropTypes.string,
         items: PropTypes.arrayOf(PropTypes.shape({
             title: PropTypes.string.isRequired,
             href: PropTypes.string.isRequired,
+            id: PropTypes.string,
         }))
     }
 
     static defaultProps = {
-        title: 'Default menu title',
+        logo: "MyApp",
         items: [],
+        id: null,
     }
 
     render() {
-        const  {title, items} = this.props;
+        const {id, logo, items} = this.props;
         return (
-            <Fragment>
-                <h3>{title}</h3>
-                <ul className="menu">
-                    {items.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
-                </ul>
-            </Fragment>
+            <div className="row" id={id}>
+                <Navbar color="light" light expand="md">
+                    <NavbarBrand href="/">{logo}</NavbarBrand>
+                    <NavbarToggler onClick={this.toggle}/>
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                                {items.map((item) =>
+                                    <NavItem>
+                                        <NavLink href={item.href} id={item.id}>{item.title}</NavLink>
+                                    </NavItem>
+                                )}
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+            </div>
         )
     }
 }
