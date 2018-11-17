@@ -2,8 +2,6 @@ import './Counter.css';
 
 import React, {Component, Fragment} from 'react';
 
-// stateless
-
 export default class Counter extends Component {
   constructor(props) {
     super(props);
