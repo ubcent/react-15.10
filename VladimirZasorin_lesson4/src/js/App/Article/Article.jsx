@@ -11,13 +11,14 @@ export default class Article extends Component {
 
     render() {
         const article = this.props.children;
-        const body = <section className="card-text">{article.text}</section>;
+        const body = this.state.isOpen && <section className="card-text">{article.text}</section>;
+        
         return (
             <div className="card mx-auto article">
                 <div className="card-header">
                     <h2>
-                        { article.id }
-                        <button onClick={this.handleClick} className="btn btn-primary btn-lg float-right">
+                        <a href="#">Article ID{ article.id }</a>
+                        <button onClick={ this.handleClick } className="btn btn-primary btn-lg float-right">
                             {this.state.isOpen ? 'close' : 'open'}
                         </button>
                     </h2>
@@ -32,8 +33,7 @@ export default class Article extends Component {
         )
     }
 
-    handleClick() {
-        console.log('----', 'clicked');
+    handleClick = () => {
         const oldValue = this.state.isOpen;
         this.setState({ 
             isOpen: !oldValue
