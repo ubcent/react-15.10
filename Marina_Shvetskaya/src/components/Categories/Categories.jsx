@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Card,
-  CardHeader,
-} from 'reactstrap';
+import { Card, CardHeader } from 'reactstrap';
 
 export default class Categories extends Component {
   static propTypes = {
@@ -18,13 +15,13 @@ export default class Categories extends Component {
   render() {
     const {items, title} = this.props;
     return (
-        <div>
+        <Fragment>
           <Card className="pb-3 mb-3">
             <CardHeader tag="h5">{title}</CardHeader>
             {items.map((item =>
               <a key={item.id} className="mt-2 ml-3" href="#">{item.item}</a>))}
           </Card>
-        </div>
+        </Fragment>
     )
   }
 }
