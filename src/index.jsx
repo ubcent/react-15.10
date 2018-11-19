@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Menu from 'components/Menu';
 import Container from './components/Container';
@@ -9,16 +10,11 @@ import CommentForm from './components/CommentForm';
 import Timer from './components/Timer';
 import CommentsContainer from 'containers/CommentsContainer';
 
+import routes from './routes';
+
 const items = [
   { href: '/', title: 'Home' },
-  { href: '/news', title: 'News' },
-  { href: '/blog', title: 'Blog' },
-];
-
-const items1 = [
-  { href: '/', title: 'Home1' },
-  { href: '/news', title: 'News1' },
-  { href: '/blog', title: 'Blog2' },
+  { href: '/comments', title: 'Comments' },
 ];
 
 class App extends Component {
@@ -28,6 +24,7 @@ class App extends Component {
     this.state = {
       comments: [],
       isModal: false,
+      activePath: '/',
     }
   }
 
@@ -42,15 +39,28 @@ class App extends Component {
     this.setState({ isModal: !this.state.isModal });
   }
 
+  handleActiveMenuItemChange = (e) => {
+    this.setState({
+      activePath: e.target.dataset.href,
+    });
+    e.preventDefault();
+  }
+
   render() {
-    const { comments, isModal } = this.state;
+    const { comments, isModal, activePath } = this.state;
 
     return (
       <div className="box">
-        <CommentsContainer />
+        <Menu items={items} />
+        <Switch>
+          {routes.map((route, idx) => <Route key={idx} {...route} />)}
+        </Switch>
       </div>
     )
   }
 }
 
-ReactDom.render(<App />, document.getElementById('root'));
+ReactDom.render(
+  <BrowserRouter><App /></BrowserRouter>,
+  document.getElementById('root')
+);
