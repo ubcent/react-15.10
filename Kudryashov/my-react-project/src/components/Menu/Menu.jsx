@@ -12,17 +12,18 @@ export default class Menu extends Component {
       })
     )
   }
-  
+
   static defaultProps = {
     items: []
   }
 
   render() {
-    const {items} = this.props;
-    return(
+    const { items, onClick } = this.props;
+    return (
       <Fragment>
         <ul className="menu">
-          {items.map((item, idx) => <li key={idx}><a href={item.href}>{item.title}</a></li>)}
+          {items.map((item, idx) =>
+            <li key={idx} onClick={onClick}><a className="main-menu" href={item.href}>{item.title}</a></li>)}
         </ul>
       </Fragment>
     )

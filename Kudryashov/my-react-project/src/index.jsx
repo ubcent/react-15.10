@@ -7,19 +7,16 @@ import Menu from './components/Menu/Menu';
 import Login from './components/Login/Login';
 import MenuFooter from './components/MenuFooter/MenuFooter';
 import LoginForm from './components/LoginForm/LoginForm';
+import ContentHome from './components/ContentHome/ContentHome';
+import BlogsContainer from './containers/BlogsContainer';
+import ContentAbout from './components/ContentAbout/ContentAbout';
+import NewsContainer from './containers/NewsContainer';
 
 const menuItems = [
-  { href: '/', title: 'Home' },
-  { href: '/news', title: 'News' },
-  { href: '/section1', title: 'Section 1' },
-  { href: '/section2', title: 'Section 2' },
-]
-
-const menuFooterItems = [
-  { href: '/', title: 'Home' },
-  { href: '/about', title: 'About' },
-  { href: '/contacts', title: 'Contacts' },
-  { href: '/qa', title: 'Q/A' },
+  { href: '#', title: 'Home' },
+  { href: '#', title: 'Blogs' },
+  { href: '#', title: 'News' },
+  { href: '#', title: 'About' },
 ]
 
 class Layout extends Component {
@@ -28,33 +25,55 @@ class Layout extends Component {
 
     this.state = {
       isModal: false,
+      varElem: <ContentHome />,
     }
   }
 
   handleModal = () => {
-    if(this.state.isModal === false) {
-    this.setState({ isModal: true });
-    } else {
-      this.setState({ isModal: false });
+    this.setState({ isModal: !this.state.isModal });
+  }
+
+  handleClickMenu = () => {
+    let menuItems = document.getElementsByClassName('main-menu');
+    for (let i = 0; i < menuItems.length; i++) {
+      menuItems[i].classList.remove('active');
     }
+    switch (event.target.text) {
+      case 'Home':
+        this.setState({ varElem: <ContentHome /> });
+        break;
+      case 'Blogs':
+        this.setState({ varElem: <BlogsContainer /> });
+        break;
+      case 'News':
+        this.setState({ varElem: <NewsContainer /> });
+        break;
+      case 'About':
+        this.setState({ varElem: <ContentAbout /> });
+        break;
+      default:
+        break;
+    }
+    event.path[0].classList.add('active');
   }
 
   render() {
-    const {isModal} = this.state;
+    const { isModal, varElem } = this.state;
     return (
       <Fragment>
         <div className="box">
-        <div className="header">
-          <Menu items={menuItems} />
-          {isModal && <LoginForm />}
-          <button className="login" onClick={this.handleModal}>ВХОД</button>
-        </div>
-        <div className="content">
-        <p>Где-то здесь контент...</p>
-        </div>
+          <div className="header">
+            <Menu items={menuItems} onClick={this.handleClickMenu} />
+            {isModal && <LoginForm />}
+            <Login onClick={this.handleModal} />
+          </div>
+          <div className="content">
+            {varElem}
+          </div>
+          <div className="for-footer"></div>
         </div>
         <div className="footer">
-        <MenuFooter items={menuFooterItems} />
+          <MenuFooter />
         </div>
       </Fragment>
     )
