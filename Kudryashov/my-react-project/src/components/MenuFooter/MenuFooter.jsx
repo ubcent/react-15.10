@@ -21,9 +21,7 @@ export default class MenuFooter extends Component {
     const {items} = this.props;
     return(
       <Fragment>
-        <ul className="menu">
-          {items.map((item, idx) => <li key={idx}><a href={item.href}>{item.title}</a></li>)}
-        </ul>
+        <p className="rights">All rights reserved &#169;</p>
       </Fragment>
     )
   }
