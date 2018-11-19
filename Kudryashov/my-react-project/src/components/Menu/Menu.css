@@ -20,3 +20,6 @@
   color: #300c46;
   text-shadow: #6ecf18 1px 1px;
 }
+.menu>li>a.active {
+  color: #300c46;
+}
