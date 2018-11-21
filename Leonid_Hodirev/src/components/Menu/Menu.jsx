@@ -6,11 +6,13 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink } from 'reactstrap';
+    NavLink,
+    Container
+} from 'reactstrap';
 
-import Button from '../Button';
-import ModalExample from "../Modal";
+import PropTypes from 'prop-types';
 
+// statefull
 export default class Menu extends React.Component {
     constructor(props) {
         super(props);
@@ -20,29 +22,45 @@ export default class Menu extends React.Component {
             isOpen: false
         };
     }
+
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
         });
     }
+
     render() {
         return (
-            <div>
-                <Navbar color="light" light expand="md">
-                    <ModalExample color="danger" title="primary" buttonLabel="Авторизация" />
+            <Navbar color="dark" className="fixed-top" dark expand="lg">
+                <Container>
+                    {/*<ModalExample color="danger" title="primary" buttonLabel="Авторизация"/>*/}
                     <NavbarBrand href="/">{this.props.title}</NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
+                    <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                            {this.props.items.map((item) => <NavItem><NavLink href={item.href}>{item.title}</NavLink></NavItem>)}
+                            {this.props.items.map((item, id) => <NavItem key={id}><NavLink
+                                href={item.href}>{item.title}</NavLink></NavItem>)}
                         </Nav>
                     </Collapse>
-                </Navbar>
-            </div>
+                </Container>
+            </Navbar>
         );
     }
 }
 
+Menu.propType = {
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            title: PropTypes.isRequired,
+            href: PropTypes.string.isRequired,
+        })
+    )
+};
+
+Menu.defaultProps = {
+    title: '',
+    items: [],
+};
 
 
 // import './Menu.css';
