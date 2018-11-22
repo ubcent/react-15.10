@@ -9,10 +9,12 @@ import {
     NavLink,
     Container
 } from 'reactstrap';
+import {Link, withRouter} from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
 // statefull
+@withRouter
 export default class Menu extends React.Component {
     constructor(props) {
         super(props);
