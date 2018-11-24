@@ -31,7 +31,7 @@ export default class CommentsContainer extends Component {
   };
 
   handleScroll = () => {
-    if (document.documentElement.clientHeight - window.scrollY - window.innerHeight === 0 && !this.state.loading) {
+    if (document.documentElement.clientHeight - window.scrollY - window.innerHeight  && !this.state.loading) {
       this.loadComments();
     }
   };

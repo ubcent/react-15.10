@@ -1,8 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import './Menu.css';
+import {Link, withRouter} from 'react-router-dom';
 
-// statefull
+@withRouter
 export default class Menu extends Component {
   static propTypes = {
     title: PropTypes.string,
@@ -20,12 +21,12 @@ export default class Menu extends Component {
   };
 
   render() {
-    const {title, items} = this.props;
+    const {title, items, activePath, onChange, location} = this.props;
     return (
         <Fragment>
           <h3>{title}</h3>
           <ul className="menu">
-            {items.map((item, idx) => <li key={idx}><a href={item.href}>{item.title}</a></li>)}
+            {items.map((item, idx) => <li key={idx} className={location.pathname === item.href ? 'active': ''}><Link to={item.href}>{item.title}</Link></li>)}
           </ul>
         </Fragment>
     )
