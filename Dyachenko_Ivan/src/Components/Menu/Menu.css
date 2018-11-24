@@ -3,25 +3,32 @@
   font-size: 25px;
   color: rgb(226, 43, 43);
   list-style: none;
-  width: 100px;
+  border-right: solid brown 4px;
+  margin-top: 0;
+
+  /*position: fixed;*/
 }
 
-.menu :visited {
+.menu li:visited {
   color: rgb(226, 43, 43);
 }
 
 .menu :hover {
   color: rgb(224, 146, 0);
-  font-weight: 100;
 }
 
 .menu a {
   text-decoration: none;
   color: rgb(226, 43, 43);
+  transition: color, ease 0.3s;
 }
 
 .menu li {
-  width: 100px;
+  padding: 0 40px 15px 0;
+}
+
+.menu li:last-child {
+  padding-bottom: 0;
 }
 
 h2 {
