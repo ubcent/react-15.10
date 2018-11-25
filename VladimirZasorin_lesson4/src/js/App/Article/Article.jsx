@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.css';
+import {Link} from 'react-router-dom';
 
 export default class Article extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ export default class Article extends Component {
             <div className="card mx-auto article">
                 <div className="card-header">
                     <h2>
-                        <a href="#">Article ID{ article.id }</a>
+                        <Link to={ `/articles/${article.id}` }>Article ID: { article.id }</Link>
                         <button onClick={ this.handleClick } className="btn btn-primary btn-lg float-right">
                             {this.state.isOpen ? 'close' : 'open'}
                         </button>

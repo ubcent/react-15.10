@@ -31,6 +31,9 @@ module.exports = {
 			}
 		]
 	},
+	devServer: {
+		historyApiFallback: true,
+	},
 	plugins: [
 		new ExtractTextWP({ filename: 'style.css' }),
 		new HtmlWP({
