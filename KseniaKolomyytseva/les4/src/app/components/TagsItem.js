@@ -6,4 +6,4 @@ export default class TagsItem extends Component {
             <a className="tags" href={this.props.href}>{this.props.name}</a>
         );
     }
-} 
+}

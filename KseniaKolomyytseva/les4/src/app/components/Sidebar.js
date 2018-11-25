@@ -29,7 +29,7 @@ const tags = [
         id: 5,
         name: 'photography',
         href: '#'
-    }, 
+    },
     {
         id: 6,
         name: 'parallax',

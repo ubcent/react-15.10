@@ -26,22 +26,30 @@ export default class Blog extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <PageTitle title={'Блог'} description={'Наши последние новости'}/>
-                <section id="content">
-                    <div className="content-wrap">
-                        <div className="container clearfix">
-                            <BlogContent>
-                                <Preloader show={ !this.state.posts.length }/>
-                                <BlogItem items={ this.state.posts }/>
-                                <Pagination/>
-                            </BlogContent>
-                            <Sidebar title={'Tag cloud'}/>
+
+        if ( !this.props.children ) {
+            return (
+                <div>
+                    <PageTitle title={'Блог'} description={'Наши последние новости'}/>
+                    <section id="content">
+                        <div className="content-wrap">
+                            <div className="container clearfix">
+                                <BlogContent>
+                                    <Preloader show={ !this.state.posts.length }/>
+                                    <BlogItem items={ this.state.posts }/>
+                                    <Pagination/>
+                                </BlogContent>
+                                <Sidebar title={'Tag cloud'}/>
+                            </div>
                         </div>
-                    </div>
-                </section>
-            </div>
-        );
+                    </section>
+                </div>
+            );
+
+        } else {
+            return (
+                this.props.children
+            );
+        }
     }
 }

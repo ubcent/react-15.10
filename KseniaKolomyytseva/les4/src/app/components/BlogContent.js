@@ -8,4 +8,4 @@ export default class BlogContent extends Component {
             </div>
         );
     }
-} 
+}

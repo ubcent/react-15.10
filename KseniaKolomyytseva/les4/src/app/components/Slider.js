@@ -20,4 +20,4 @@ export default class Slider extends Component {
             </div>
         );
     }
-} 
+}

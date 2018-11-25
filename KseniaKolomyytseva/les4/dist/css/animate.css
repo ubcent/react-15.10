@@ -3229,7 +3229,7 @@ Copyright (c) 2014 Daniel Eden
 	0% {
 		-webkit-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
-	} 
+	}
 
 	100% {
 		visibility: hidden;

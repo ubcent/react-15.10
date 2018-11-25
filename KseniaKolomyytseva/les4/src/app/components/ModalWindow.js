@@ -54,4 +54,4 @@ export default class ModalWindow extends Component {
             </div>
         );
     }
-} 
+}

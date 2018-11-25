@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Main from './layouts/Main';
 import Index from './pages/Index';
 import Blog from './pages/Blog';
+import BlogDetail from './pages/BlogDetail';
 import Comments from './pages/Comments';
 import Users from './pages/Users';
 import Error404 from './pages/Error404';
@@ -15,10 +16,12 @@ ReactDOM.render(
     <Router history={ browserHistory }>
         <Route path="/" component={ Main }>
             <IndexRoute component={ Index }/>
-            <Route path="blog/" component={ Blog }/>
+            <Route path="blog/" component={ Blog }>
+                <Route path=":blogId" component={ BlogDetail } />
+            </Route>
             <Route path="comments/" component={ Comments }/>
             <Route path="users/" component={ Users }/>
             <Route path="*" component={ Error404 }/>
         </Route>
     </Router>
-, app ); 
+, app );

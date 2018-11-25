@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default class BlogItem extends Component {
     render() {
@@ -8,11 +9,13 @@ export default class BlogItem extends Component {
             return (
                 <div className="entry clearfix" key={ item.id }>
                     <div className="entry-image">
-                        <img className="image_fade" src="/images/17.jpg" alt="Standard Post with Image"/>
+                        <Link to={ `/blog/${ item.id }/` }>
+                            <img className="image_fade" src="/images/17.jpg" alt="Standard Post with Image"/>
+                        </Link>
                     </div>
                     <div className="entry-c">
                         <div className="entry-title">
-                            <h2><a href="#">{ item.title }</a></h2>
+                            <h2><Link to={ `/blog/${ item.id }/` }>{ item.title }</Link></h2>
                         </div>
                         <ul className="entry-meta clearfix">
                             <li><i className="icon-calendar3"/> 10th Feb 2017</li>
@@ -26,7 +29,7 @@ export default class BlogItem extends Component {
                         </ul>
                         <div className="entry-content">
                             <p>{ item.body }</p>
-                            <a href="#" className="more-link">{ textReadMore }</a>
+                            <Link to={ `/blog/${ item.id }/` } className="more-link">{ textReadMore }</Link>
                         </div>
                     </div>
                 </div>
@@ -39,4 +42,4 @@ export default class BlogItem extends Component {
             </div>
         );
     }
-} 
+}

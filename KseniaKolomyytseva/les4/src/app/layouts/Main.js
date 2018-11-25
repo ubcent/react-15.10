@@ -37,7 +37,7 @@ export default class Main extends Component {
                     menu: menuItems
                 } );
             } );
-    } 
+    }
 
     render() {
         return (

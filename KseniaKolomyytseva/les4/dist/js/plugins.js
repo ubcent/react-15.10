@@ -33,7 +33,7 @@
  *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
-*/ 
+*/
 
 // t: current time, b: begInnIng value, c: change In value, d: duration
 jQuery.easing['jswing'] = jQuery.easing['swing'];
@@ -463,7 +463,7 @@ settings.itemCallback.call(container,item);}});if($.isFunction(callback)){callba
 
 
 
-/*jquery.mb.YTPlayer 05-01-2017
+/*jquery.mb.YTPlayer 25-11-2018
  _ jquery.mb.components
  _ email: matteo@open-lab.com
  _ Copyright (c) 2001-2017. Matteo Bicocchi (Pupunzi);

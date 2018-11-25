@@ -2879,7 +2879,7 @@ var SEMICOLON = SEMICOLON || {};
 								element.removeClass('customjs');
 								SEMICOLON.widget.masonryThumbs();
 							});
-						}); 
+						});
 
 					} else if( dribbbleType == 'list' ) {
 
