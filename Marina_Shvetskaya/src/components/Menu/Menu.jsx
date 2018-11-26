@@ -1,15 +1,11 @@
+import './Menu.css';
+
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import {Link, withRouter} from 'react-router-dom';
 
+@withRouter
 export default class Menu extends Component {
   static propTypes = {
     titleBlog: PropTypes.string.isRequired,
@@ -36,15 +32,16 @@ export default class Menu extends Component {
   };
 
   render() {
-    const {items, titleBlog} = this.props;
+    const {items, titleBlog, location} = this.props;
+
     return (
       <Fragment>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">{titleBlog}</NavbarBrand>
+          <NavbarBrand className="text-primary" style={{'fontWeight': 'bold'}}>{titleBlog}</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              {items.map((item, idx) => <NavItem key={idx}><NavLink href={item.href}>{item.title}</NavLink></NavItem>)}
+              {items.map((item, idx) => <NavItem className={location.pathname === item.href ? 'active' : ''} key={idx}><Link className="nav-link" to={item.href}>{item.title}</Link></NavItem>)}
             </Nav>
           </Collapse>
         </Navbar>

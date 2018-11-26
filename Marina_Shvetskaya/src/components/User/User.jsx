@@ -1,26 +1,28 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CardText, CardBody, CardTitle, CardLink } from 'reactstrap';
-import UserPosts from 'containers/UserPosts';
+import UserPostsContainer from 'containers/UserPostsContainer';
 
+// Компонент карточки отдельного пользователя
 export default class User extends Component {
-    
+
    render() {
-    const { user } = this.props;
+    const { user, isOpen, onButtonPostsClick } = this.props;
+    const userPosts = isOpen && <UserPostsContainer user={user}/>;
 
      return (
       <Fragment>
         <Card className="mb-4 pb-4">
           <CardHeader>
-            <CardLink href="#" className="mb-2 text-primary">
-              # Blog {user.name}
-            </CardLink>
-            <CardLink href="#" className="mb-2 text-primary float-right">
-              nickname: {user.username} 
-            </CardLink>
+            <CardTitle className="text-primary float-left">
+              Blog #{user.id} of user {user.name} (nickname: {user.username})
+            </CardTitle>
+            <button onClick={onButtonPostsClick}  className="btn btn-primary float-right">
+              {isOpen ? 'Close' : 'Open'}
+            </button>
           </CardHeader>
           <CardBody>
-            <UserPosts user={user}/>
+            {userPosts}
           </CardBody>
         </Card>
       </Fragment>

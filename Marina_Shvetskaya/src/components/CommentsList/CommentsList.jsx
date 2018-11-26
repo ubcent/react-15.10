@@ -1,16 +1,11 @@
-// import './CommentsList.css';
-
 import React, { Component, Fragment } from 'react';
-import Comment from 'components/Comment';
+import {Link} from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 export default class CommentsList extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {};
-  }
-
+  // Компонент комментариев
   render() {
     const { comments } = this.props;
 
@@ -18,7 +13,13 @@ export default class CommentsList extends Component {
       <Fragment>
         <ul>
           <li><h4>Комментарии</h4></li>
-          {comments.map((comment, idx) => <Comment key={idx} comment={comment}/>)}
+          {comments.map(({postId, id, name, body}, idx) =>
+            <li key={idx}>
+              <Link to={`/comments/${id}`}>
+                <h5>Comment #{id} on post #{postId}: {name}</h5>
+              </Link>
+              <p>{body}</p>
+            </li>)}
         </ul>
       </Fragment>
     )

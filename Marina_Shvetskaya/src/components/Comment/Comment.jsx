@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardText, CardBody, CardTitle, CardLink } from 'reactstrap';
 import PropTypes from 'prop-types';
 
@@ -11,17 +12,18 @@ export default class Comment extends Component {
       <Fragment>
         <Card className="mb-4 pb-4">
           <CardHeader>
-            <CardLink href="#" className="mb-2 text-primary">
-              # Blog {comment.postId}: {comment.name}
-            </CardLink>
-            <CardLink href="#" className="mb-2 text-primary float-right">
-              {comment.id} 
-            </CardLink>
+            <CardTitle className="mb-2 text-primary">
+              Comment id #{comment.id} on post #{comment.postId}
+            </CardTitle>
           </CardHeader>
           <CardBody>
+            <CardTitle>
+              {comment.name}
+            </CardTitle>
             {comment.body}
           </CardBody>
         </Card>
+        <Link to={'/comments'} className="btn btn-primary">Назад</Link>
       </Fragment>
     )
   }
