@@ -1,44 +1,50 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {Container, Row, Col} from 'reactstrap';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Menu from './components/Menu';
-import Article from './components/Article';
+import Search from './components/Search';
+import routes from './routes';
 
-import './css/style.css';
 
 const items = [
-    {href: '#', title: 'Главная'},
-    {href: '#', title: 'О нас'},
-    {href: '#', title: 'Контакты'},
+    {href: '#', title: 'Home'},
+    {href: '#', title: 'About'},
+    {href: '#', title: 'Services'},
+    {href: '#', title: 'Contact'},
 ];
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
-            <Container>
-                <Menu items={items} />
-                <Row>
-                    {/*<div className="box">*/}
-                    {/*Hw!*/}
-                    {/*</div>*/}
-                    {/*<Col xl="3">.col</Col>*/}
-                    {/*<Col xl="3">.col</Col>*/}
-                    {/*<Col xl="3">.col</Col>*/}
-                    {/*<Col xl="3">.col</Col>*/}
-                    <Col xl="12">
-                        <Article
-                            head="Hello, world!"
-                            lead="This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information."
-                            text="It uses utility classes for typography and spacing to space content out within the larger container."
-                        />
-                    </Col>
-                </Row>
-            </Container>
+            <Fragment>
+                <Menu items={items} title="Start Bootstrap"/>
+                <Container className="main">
+                    <Row>
+                        <Col md="8">
+                            <Switch>
+                                {routes.map((route, idx) => <Route key={idx} {...route} />)}
+                            </Switch>
+                        </Col>
+                        <Col md="4">
+                            <Search/>
+                        </Col>
+                    </Row>
+                </Container>
+            </Fragment>
         )
     }
 }
 
-ReactDom.render(<App/>, document.body);
+ReactDom.render(
+    <BrowserRouter><App/></BrowserRouter>,
+    document.getElementById('root')
+);
