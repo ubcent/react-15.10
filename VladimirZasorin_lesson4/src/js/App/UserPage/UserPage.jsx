@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
-export default class User extends Component {
+import {users} from '../data/users.js';
+
+export default class UserPage extends Component {
     constructor(props) {
         super(props);
     }
-
     render() {    
-        let user = this.props.children;    
+        const { match } = this.props;
+        let user = users[match.params.id];
         return (
             <div className="media">
                 <img className="mr-3" src={ user.smImg } alt="image" />
