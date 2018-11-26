@@ -4,12 +4,6 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 export default class ContentAbout extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
   render() {
     return (
       <div className="ContentAbout">
@@ -17,7 +11,6 @@ export default class ContentAbout extends Component {
           diam semper quis. Nulla efficitur luctus imperdiet. Donec non felis vel tortor luctus tempor. Aenean id magna
           placerat, imperdiet ante et, tempor purus. Fusce laoreet pharetra quam ut vehicula. Nullam non mattis mi,
           commodo lacinia libero. Sed ac efficitur magna. Nulla lacinia consequat magna.</p>
-
         <p>Donec vitae leo aliquam, condimentum orci eget, gravida mi. Integer aliquam in ligula nec pulvinar.
            Maecenas dictum blandit nibh, eu sodales ex aliquam vitae. Maecenas porta erat sapien, et ultricies enim
             eleifend cursus. Praesent at venenatis ligula. Suspendisse nunc mi, laoreet sit amet lectus finibus, semper

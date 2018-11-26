@@ -21,6 +21,7 @@ export default class BlogsContainer extends Component {
         this.setState({
           loading: false,
           blogs: this.state.blogs.concat(blogs),
+          page: page + 1,
         })
       })
       .catch(() => { this.setState({ loading: false }); });
@@ -46,7 +47,7 @@ export default class BlogsContainer extends Component {
     const { loading, blogs } = this.state;
     return (
       <Fragment>
-        <ContentBlogs blogs={blogs} onClick={this.handleClick}/>
+        <ContentBlogs blogs={blogs} onClick={this.handleClick} />
         {loading ? 'Loading' : ''}
       </Fragment>
     )

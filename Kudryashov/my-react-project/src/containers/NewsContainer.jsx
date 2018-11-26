@@ -21,6 +21,7 @@ export default class NewsContainer extends Component {
         this.setState({
           loading: false,
           news: this.state.news.concat(news),
+          page: page + 1,
         })
       })
       .catch(() => { this.setState({ loading: false }); });

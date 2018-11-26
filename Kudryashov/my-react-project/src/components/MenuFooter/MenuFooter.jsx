@@ -12,14 +12,14 @@ export default class MenuFooter extends Component {
       })
     )
   }
-  
+
   static defaultProps = {
     items: []
   }
 
   render() {
-    const {items} = this.props;
-    return(
+    const { items } = this.props;
+    return (
       <Fragment>
         <p className="rights">All rights reserved &#169;</p>
       </Fragment>

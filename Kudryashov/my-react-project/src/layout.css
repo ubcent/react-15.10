@@ -15,11 +15,9 @@ html, body, #blog, .box {
   padding: 0 100px;
   background-color: #076ca3;
 }
-
 .for-footer {
   height: 110px;
 }
-
 .footer {
   display: flex;
   justify-content: space-around;
@@ -28,7 +26,6 @@ html, body, #blog, .box {
   background-color: #076ca3;
   height: 110px;
 }
-
 .login {
   font-size: 1.5em;
   font-weight: bold;
@@ -41,7 +38,6 @@ html, body, #blog, .box {
   height: 100px;
   width: 100px;
 }
-
 .login:active {
   color: #300c46;
   background-color: #6ecf18;
