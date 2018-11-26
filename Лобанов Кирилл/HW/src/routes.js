@@ -1,9 +1,11 @@
-import CommentsContainer from 'containers/CommentsContainer';
 import Home from 'components/Home';
-import UsersContainer from 'containers/UsersContainer';
-import Article from 'components/Article';
+
+import CommentsContainer from 'containers/CommentsContainer';
 import CommentContainer from 'containers/CommentContainer';
+import UsersContainer from 'containers/UsersContainer';
 import UserWatch from 'containers/UserWatch';
+import ArticlesContainer from 'containers/ArticlesContainer';
+import  ArticleContainer from 'containers/ArticleContainer';
 
 export default [
   {
@@ -14,7 +16,12 @@ export default [
   {
     path: '/blog',
     exact: true,
-    component: Article
+    component: ArticlesContainer
+  },
+  {
+    path: '/blog/:id',
+    exact: true,
+    component: ArticleContainer
   },
   {
     path: '/comments',
