@@ -1,14 +1,17 @@
 import React, { Component, Fragment } from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Card, CardHeader, CardText, CardBody, CardTitle, CardLink } from 'reactstrap';
+import { Card, CardHeader, CardText, CardBody, CardTitle } from 'reactstrap';
 
+// Компонент карточки отдельного блога
 export default class Blog extends Component {
 
    render() {
     const { post, isOpen, onButtonClick } = this.props;
-    const cardBody = isOpen && (
+     console.log(this.props);
+     const cardBody = isOpen && (
     <CardBody>
-      <CardTitle>{post.title}</CardTitle>
+      <CardTitle><Link to={`/users/${post.id}/${post.userId}`}>{post.title}</Link></CardTitle>
       <CardText>{post.body}</CardText>
     </CardBody>
     );
@@ -17,7 +20,7 @@ export default class Blog extends Component {
       <Fragment>
         <Card className="mb-4 pb-4">
           <CardHeader>
-            <CardLink href="#" className="mb-2 text-primary">#{post.id} {post.title}</CardLink>
+            <Link to={`/users/${post.id}/${post.userId}`} className="mb-2 text-primary">Post #{post.id} {post.title}</Link>
             <button onClick={onButtonClick} className="btn btn-primary float-right">
               {isOpen ? 'Close' : 'Open'}
             </button>

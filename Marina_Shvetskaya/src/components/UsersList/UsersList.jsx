@@ -8,13 +8,17 @@ export default class UsersList extends Component {
     super(props);
 
     this.state = {
-      openBlogId: null,
+      openUserId: 1,
     }
   }
-  
-  handleClick = openBlogId => {
+
+  /**
+   * Обрабатывает клик по кнопке "Open"/"Close", передает нужное состояние компоненту отдельного gjkmpjdfntkz
+   * @param {int} openUserId - id открытой карточки пользователя (при инициализации = 1)
+   */
+  handleClick = openUserId => {
     this.setState({
-      openBlogId: this.state.openBlogId === openBlogId ? null : openBlogId
+      openUserId: this.state.openUserId === openUserId ? null : openUserId,
     })
   };
 
@@ -24,9 +28,11 @@ export default class UsersList extends Component {
     return (
       <ul>
         <li><h4>Пользователи</h4></li>
-        {users.map((user) => <User key={user.id} user={user} 
-        isOpen ={this.state.openBlogId === user.id}
-        onButtonClick = {this.handleClick.bind(null, user.id)} />)}
+        {users.map((user) =>
+          <User key={user.id} user={user}
+            isOpen ={this.state.openUserId === user.id}
+            onButtonPostsClick = {this.handleClick.bind(null, user.id)}
+          />)}
       </ul>
     )
   }
