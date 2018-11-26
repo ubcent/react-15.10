@@ -1,7 +1,7 @@
 import './ContentBlogs.css';
 
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default class ContentBlogs extends Component {
   constructor(props) {
@@ -12,12 +12,13 @@ export default class ContentBlogs extends Component {
 
   render() {
     const { blogs } = this.props;
-    return(
+    return (
       <Fragment>
-      <ul className="ContentBlogs">
-      {blogs.map(({title, body}, idx) => <li key={idx}><h3>{title}</h3><p>{body}</p></li>)}
-      <button className="more-blogs" onClick={this.props.onClick}>More blogs...</button>
-      </ul>
+        <ul className="ContentBlogs">
+          {blogs.map(({ title, body, id }, idx) =>
+            <li key={idx}><Link to={`/blogs/${id}`}><h3>{title}</h3></Link><p>{body}</p></li>)}
+          <button className="more-blogs" onClick={this.props.onClick}>More blogs...</button>
+        </ul>
       </Fragment>
     )
   }

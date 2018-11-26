@@ -11,12 +11,14 @@ import ContentHome from './components/ContentHome/ContentHome';
 import BlogsContainer from './containers/BlogsContainer';
 import ContentAbout from './components/ContentAbout/ContentAbout';
 import NewsContainer from './containers/NewsContainer';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import routes from './routes';
 
 const menuItems = [
-  { href: '#', title: 'Home' },
-  { href: '#', title: 'Blogs' },
-  { href: '#', title: 'News' },
-  { href: '#', title: 'About' },
+  { href: '/', title: 'Home' },
+  { href: '/blogs', title: 'Blogs' },
+  { href: '/news', title: 'News' },
+  { href: '/about', title: 'About' },
 ]
 
 class Layout extends Component {
@@ -25,7 +27,7 @@ class Layout extends Component {
 
     this.state = {
       isModal: false,
-      varElem: <ContentHome />,
+      // varElem: <ContentHome />,
     }
   }
 
@@ -33,29 +35,29 @@ class Layout extends Component {
     this.setState({ isModal: !this.state.isModal });
   }
 
-  handleClickMenu = () => {
-    let menuItems = document.getElementsByClassName('main-menu');
-    for (let i = 0; i < menuItems.length; i++) {
-      menuItems[i].classList.remove('active');
-    }
-    switch (event.target.text) {
-      case 'Home':
-        this.setState({ varElem: <ContentHome /> });
-        break;
-      case 'Blogs':
-        this.setState({ varElem: <BlogsContainer /> });
-        break;
-      case 'News':
-        this.setState({ varElem: <NewsContainer /> });
-        break;
-      case 'About':
-        this.setState({ varElem: <ContentAbout /> });
-        break;
-      default:
-        break;
-    }
-    event.path[0].classList.add('active');
-  }
+  // handleClickMenu = () => {
+
+    // menuItems.forEach(element => {
+    //   element['title'] === event.target.text ? element['classActive'] = 'active' : delete element['classActive'];
+    // });
+
+    // switch (event.target.text) {
+    //   case 'Home':
+    //     this.setState({ varElem: <ContentHome /> });
+    //     break;
+    //   case 'Blogs':
+    //     this.setState({ varElem: <BlogsContainer /> });
+    //     break;
+    //   case 'News':
+    //     this.setState({ varElem: <NewsContainer /> });
+    //     break;
+    //   case 'About':
+    //     this.setState({ varElem: <ContentAbout /> });
+    //     break;
+    //   default:
+    //     break;
+    // }
+  // }
 
   render() {
     const { isModal, varElem } = this.state;
@@ -63,12 +65,16 @@ class Layout extends Component {
       <Fragment>
         <div className="box">
           <div className="header">
-            <Menu items={menuItems} onClick={this.handleClickMenu} />
+            {/* <Menu items={menuItems} onClick={this.handleClickMenu} /> */}
+            <Menu items={menuItems} />
             {isModal && <LoginForm />}
             <Login onClick={this.handleModal} />
           </div>
           <div className="content">
-            {varElem}
+            {/* {varElem} */}
+            <Switch>
+              {routes.map((route, idx) => <Route key={idx} {...route} />)}
+            </Switch>
           </div>
           <div className="for-footer"></div>
         </div>
@@ -80,4 +86,4 @@ class Layout extends Component {
   }
 }
 
-ReactDom.render(<Layout />, document.getElementById('blog'));
+ReactDom.render(<BrowserRouter><Layout /></BrowserRouter>, document.getElementById('blog'));

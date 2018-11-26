@@ -1,7 +1,7 @@
 import './ContentNews.css';
 
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default class ContentNews extends Component {
   constructor(props) {
@@ -12,12 +12,13 @@ export default class ContentNews extends Component {
 
   render() {
     const { news } = this.props;
-    return(
+    return (
       <Fragment>
-      <ul className="ContentNews">
-      {news.map(({name, body}, idx) => <li key={idx}><h3>{name}</h3><p>{body}</p></li>)}
-      <button className="more-news" onClick={this.props.onClick}>More news...</button>
-      </ul>
+        <ul className="ContentNews">
+          {news.map(({ name, body, id }, idx) =>
+            <li key={idx}><Link to={`/news/${id}`}><h3>{name}</h3></Link><p>{body}</p></li>)}
+          <button className="more-news" onClick={this.props.onClick}>More news...</button>
+        </ul>
       </Fragment>
     )
   }
