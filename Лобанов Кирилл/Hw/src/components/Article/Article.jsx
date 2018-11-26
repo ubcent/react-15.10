@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import './Article.css'
 
-import Comment from '../Comment';
+import Comment from '../CommentForm';
 
 export default class Article extends Component {
     constructor(props) {

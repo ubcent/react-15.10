@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import Menu from 'components/Menu';
 import Container from './components/Container';
@@ -11,6 +12,7 @@ import Timer from './components/Timer';
 import CommentsContainer from 'containers/CommentsContainer';
 
 import routes from './routes';
+import store from './store';
 
 const items = [
   { href: '/', title: 'Home' },
@@ -61,6 +63,6 @@ class App extends Component {
 }
 
 ReactDom.render(
-  <BrowserRouter><App /></BrowserRouter>,
+  <Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>,
   document.getElementById('root')
 );
