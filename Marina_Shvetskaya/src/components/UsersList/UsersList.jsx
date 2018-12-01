@@ -13,7 +13,7 @@ export default class UsersList extends Component {
   }
 
   /**
-   * Обрабатывает клик по кнопке "Open"/"Close", передает нужное состояние компоненту отдельного gjkmpjdfntkz
+   * Обрабатывает клик по кнопке "Open"/"Close", передает нужное состояние компоненту отдельного пользователя
    * @param {int} openUserId - id открытой карточки пользователя (при инициализации = 1)
    */
   handleClick = openUserId => {
