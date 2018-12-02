@@ -1,6 +1,6 @@
 export default [
     {
-        name: 'Home (Login)',
+        name: 'Home',
         href: '/',
     },
     {
@@ -14,5 +14,9 @@ export default [
     {
         name: 'Comments',
         href: '/comments',
+    },
+    {
+        name: 'Login',
+        href: '/login',
     }
 ];

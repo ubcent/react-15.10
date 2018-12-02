@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import List from 'components/List';
 import { load } from 'actions/comments';
+import ErrorBoundary from 'components/ErrorBoundary';
 
 class CommentsContainer extends Component {
     componentDidMount() {
@@ -13,8 +14,10 @@ class CommentsContainer extends Component {
         const { loading, comments } = this.props;
         return (
             <Fragment>
-                <List elements={ comments } type="comments" />
-                {loading ? 'Loading' : ''}
+                <ErrorBoundary>
+                    <List elements={ comments } type="comments" />
+                    {loading ? 'Loading' : ''}
+                </ErrorBoundary>
             </Fragment>
         )
     }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import ErrorBoundary from '../ErrorBoundary';
+
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -22,6 +24,8 @@ export default class Login extends Component {
                 email: '',
                 password: '',
             });
+            this.emailCorrect = false;
+            this.passwordCorrect = false;
         }
     }
 
@@ -38,37 +42,39 @@ export default class Login extends Component {
 
     render() {
         return (
-            <form className="mx-auto article" onSubmit={ this.handleSubmit }>
-                <div className="form-group">
-                    <label>Email address</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        ref="email"
-                        value={ this.state.email }
-                        onChange={ this.emailHandleChange }
-                        placeholder="Enter email"/>
-                    <div className={!this.emailCorrect ? "bg-danger" : "bg-danger invisible"}>
-                        Enter your e-mail address in the format: login@host.com
+            <ErrorBoundary>
+                <form className="mx-auto article" onSubmit={ this.handleSubmit }>
+                    <div className="form-group">
+                        <label>Email address</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            ref="email"
+                            value={ this.state.email }
+                            onChange={ this.emailHandleChange }
+                            placeholder="Enter email"/>
+                        <div className={!this.emailCorrect ? "bg-danger" : "bg-danger invisible"}>
+                            Enter your e-mail address in the format: login@host.com
+                        </div>
+                        <small className="form-text text-muted">
+                            We'll never share your email with anyone else.
+                        </small>
                     </div>
-                    <small className="form-text text-muted">
-                        We'll never share your email with anyone else.
-                    </small>
-                </div>
-                <div className="form-group">
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        value={ this.state.password }
-                        onChange={ this.passwordHandleChange }
-                        placeholder="Enter password"/>
-                    <div className={!this.passwordCorrect ? "bg-danger" : "bg-danger invisible"}>
-                        Password must be 4 symbols length
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            value={ this.state.password }
+                            onChange={ this.passwordHandleChange }
+                            placeholder="Enter password"/>
+                        <div className={!this.passwordCorrect ? "bg-danger" : "bg-danger invisible"}>
+                            Password must be 4 symbols length
+                        </div>
                     </div>
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
+            </ErrorBoundary>
         )
     }
 }

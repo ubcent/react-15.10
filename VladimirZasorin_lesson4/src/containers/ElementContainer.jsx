@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 
 import Article from 'components/Article';
 import User from 'components/User';
+import ErrorBoundary from 'components/ErrorBoundary';
 
 export default class ElementContainer extends Component {
     constructor({ match, ...props}) {
@@ -18,8 +20,8 @@ export default class ElementContainer extends Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        fetch(`https://jsonplaceholder.typicode.com/${ this.type }/${ this.id }`)
-            .then((response) => response.json())
+        axios.get(`https://jsonplaceholder.typicode.com/${ this.type }/${ this.id }`)
+            .then((response) => response.data)
             .then((element) => {
                 this.setState({
                     loading: false,
@@ -32,7 +34,9 @@ export default class ElementContainer extends Component {
     render() {
         return (
             <Fragment>
-                { this.typeOfElement(this.state.element) }
+                <ErrorBoundary>
+                    { this.typeOfElement(this.state.element) }
+                </ErrorBoundary>
             </Fragment>
         )
     }
