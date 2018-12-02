@@ -1,4 +1,4 @@
-import {createAction} from 'redux-actions';
+import { createAction } from 'redux-actions';
 
 export const loadStarted = createAction('[Comments] Loading started');
 export const loadCompleted = createAction('[Comments] Loading completed');

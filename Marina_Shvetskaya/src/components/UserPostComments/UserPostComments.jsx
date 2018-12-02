@@ -6,7 +6,6 @@ import {CardBody, CardTitle} from 'reactstrap';
 // Компонент списка комментариев к посту отдельного пользователя
 export default function (props) {
   const {postComments} = props;
-  console.log(postComments);
   return (
     <ul>
       {postComments.map(({email, name, body, id}, idx) =>

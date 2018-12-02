@@ -1,43 +1,33 @@
 import React, {Component, Fragment} from 'react';
+import { connect } from 'react-redux';
 
 import TopPosts from 'components/TopPosts';
 import PropTypes from 'prop-types';
+import { loadTopPostsAction } from "actions/topPosts";
 
 // Контейнер с логикой рендеринга блока с последними постами
-export default class TopPostsContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: true,
-      posts: [],
-      amount: 10,
-    }
-  }
+class TopPostsContainer extends Component {
+  // constructor(props) {
+  //   super(props);
+  //
+  //   this.state = {
+  //     loading: true,
+  //     posts: [],
+  //     amount: 10,
+  //   }
+  // }
 
   /**
    * Загружает комментарий по его id
    */
   componentDidMount() {
-    const { amount } = this.state;
-    this.setState({
-      loading: true,
-    });
-    fetch(`https://jsonplaceholder.typicode.com/posts?_sort=id&_order=desc&_limit=${amount}`)
-      .then((response) => response.json())
-      .then((posts) => {
-        this.setState({
-          loading: false,
-          posts: this.state.posts.concat(posts),
-        })
-      })
-      .catch(() => {
-        this.setState({loading: false});
-      });
+    const { loadTopPosts } = this.props;
+
+    loadTopPosts();
   }
 
   render() {
-    const {loading, posts} = this.state;
+    const {loading, posts} = this.props;
 
     return (
       <Fragment>
@@ -47,3 +37,20 @@ export default class TopPostsContainer extends Component {
     )
   }
 }
+
+function mapStateToProps(state, props) {
+  return {
+    ...props,
+    posts: state.posts.entities,
+    loading: state.posts.loading,
+  }
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    ...props,
+    loadTopPosts: () => loadTopPostsAction(dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopPostsContainer);
