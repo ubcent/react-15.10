@@ -3,6 +3,7 @@ import './Userslist.scss';
 import React, { Component } from 'react';
 import User from 'components/User';
 
+
 export default class UsersList extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,7 @@ export default class UsersList extends Component {
    * Обрабатывает клик по кнопке "Open"/"Close", передает нужное состояние компоненту отдельного пользователя
    * @param {int} openUserId - id открытой карточки пользователя (при инициализации = 1)
    */
-  handleClick = openUserId => {
+  handleClick = openUserId => () => {
     this.setState({
       openUserId: this.state.openUserId === openUserId ? null : openUserId,
     })
@@ -31,7 +32,7 @@ export default class UsersList extends Component {
         {users.map((user) =>
           <User key={user.id} user={user}
             isOpen ={this.state.openUserId === user.id}
-            onButtonPostsClick = {this.handleClick.bind(null, user.id)}
+            onButtonPostsClick = {this.handleClick(user.id)}
           />)}
       </ul>
     )

@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import UserPosts from 'components/UserPosts';
 
@@ -6,6 +6,7 @@ import UserPosts from 'components/UserPosts';
 export default class UserPostsContainer extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
 
     this.user = this.props.user;
     this.userId = this.user.id;
@@ -13,13 +14,16 @@ export default class UserPostsContainer extends Component {
     this.state = {
       loading: true,
       userPosts: [],
-    }
+    };
+    console.log(this.state);
+
   }
 
   /**
    * Загружает посты пользователя из хранилища
    */
   componentDidMount() {
+
     this.setState({
       loading: true,
     });

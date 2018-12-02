@@ -1,63 +1,46 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 import CommentsList from 'components/CommentsList';
-import PropTypes from 'prop-types';
+import { load } from 'actions/comments';
 
 // Контейнер с логикой рендеринга страницы "Комментарии"
-export default class CommentsContainer extends Component {
-  constructor(props) {
-    super(props);
+class CommentsContainer extends Component {
 
-    this.state = {
-      loading: true,
-      comments: [],
-      page: 1,
-    }
-  }
 
   /**
    * Загружает комментарии из хранилища
    */
-  loadComments = () => {
-    const { page } = this.state;
-    this.setState({
-      loading: true,
-    });
-    fetch(`https://jsonplaceholder.typicode.com/comments?_sort=id&_order=desc&_limit=10&_page=${page}`)
-    .then((response) => response.json())
-    .then((comments) => {
-      this.setState({
-        loading: false,
-        page: page + 1,
-        comments: this.state.comments.concat(comments),
-      })
-    })
-    .catch(() => {this.setState({loading: false}); });
-  };
+  // loadComments = () => {
+    // const { page } = this.state;
+  // };
 
   /**
    * Обрабатывает прокрутку колеса мыши, вызывает загрузчик следующей страницы комментариев
    */
   handleScroll = () => {
-    if(document.documentElement.clientHeight - window.scrollY - window.innerHeight <= 50 && window.scrollY !== 0) {
-      if(!this.state.loading) {
-        this.loadComments();
-      }
-    }
+    // if(document.documentElement.clientHeight - window.scrollY - window.innerHeight <= 50 && window.scrollY !== 0) {
+    //   if(!this.state.loading) {
+        // this.loadComments();
+    //   }
+    // }
   };
 
   componentDidMount() {
-    this.loadComments();
+    const { loadComments } = this.props;
 
-    window.addEventListener('scroll', this.handleScroll);
+    loadComments();
+
+    // window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    // window.removeEventListener('scroll', this.handleScroll);
   }
 
   render() {
-    const { loading, comments } = this.state;
+    const { loading, comments } = this.props;
+
     return (
       <Fragment>
         <CommentsList comments={comments}/>
@@ -66,3 +49,20 @@ export default class CommentsContainer extends Component {
     )
   }
 }
+
+function mapStateToProps(state, props) {
+  return {
+    ...props,
+    comments: state.comments.entities,
+    loading: state.comments.loading,
+  }
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    ...props,
+    loadComments: () => load(dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentsContainer);
