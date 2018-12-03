@@ -31,7 +31,7 @@ export default class UsersList extends Component {
         <li><h4>Пользователи</h4></li>
         {users.map((user) =>
           <User key={user.id} user={user}
-            isOpen ={this.state.openUserId === user.id}
+            isOpen = {this.state.openUserId === user.id}
             onButtonPostsClick = {this.handleClick(user.id)}
           />)}
       </ul>

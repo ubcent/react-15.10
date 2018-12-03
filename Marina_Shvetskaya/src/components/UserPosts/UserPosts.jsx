@@ -1,8 +1,8 @@
 import './UserPosts.css';
 
-import React, {Fragment} from 'react';
-import {Link} from 'react-router-dom';
-import { Card, CardHeader, CardText, CardBody, CardTitle, CardLink } from 'reactstrap';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import { CardBody, CardTitle } from 'reactstrap';
 
 // Компонент списка постов отдельного пользователя
 export default function (props) {
