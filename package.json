@@ -14,12 +14,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.14",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
-    "redux-actions": "^2.6.4"
+    "redux-actions": "^2.6.4",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
