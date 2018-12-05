@@ -47,7 +47,7 @@ export default class Article extends Component {
         }
     }
 
-    handleClick = () => this.setState({ isOpen: !this.state.isOpen });
+    handleClick = () => this.setState(state => ({ isOpen: !state.isOpen }));
 }
 
 Article.propTypes = {

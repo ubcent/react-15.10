@@ -16,6 +16,10 @@ export default [
         href: '/comments',
     },
     {
+        name: 'Chat',
+        href: '/chats',
+    },
+    {
         name: 'Login',
         href: '/login',
     }

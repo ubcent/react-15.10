@@ -6,8 +6,25 @@ import { load } from 'actions/comments';
 import ErrorBoundary from 'components/ErrorBoundary';
 
 class CommentsContainer extends Component {
+    handleScroll = () => {
+        const { loadComments } = this.props;
+        if(document.documentElement.offsetHeight - (document.documentElement.scrollTop + window.innerHeight) <= 50) {
+            if(!this.props.loading) {
+                loadComments();
+            }
+        }
+    }
+  
     componentDidMount() {
-        this.props.loadComments();
+        const { loadComments } = this.props;
+    
+        loadComments();
+    
+        window.addEventListener('scroll', this.handleScroll);
+    }
+  
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
     }
 
     render() {
@@ -34,7 +51,7 @@ function mapStateToProps(state, props) {
 function mapDisatchToProps(dispatch, props) {
     return {
         ...props,
-        loadComments: () => load(dispatch),
+        loadComments: () => dispatch(load()),
     }
 }
 

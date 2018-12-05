@@ -6,8 +6,25 @@ import { load } from 'actions/articles';
 import ErrorBoundary from 'components/ErrorBoundary';
 
 class ArticlesContainer extends Component {
+    handleScroll = () => {
+        const { loadPosts } = this.props;
+        if(document.documentElement.offsetHeight - (document.documentElement.scrollTop + window.innerHeight) <= 50) {
+            if(!this.props.loading) {
+                loadPosts();
+            }
+        }
+    }
+  
     componentDidMount() {
-        this.props.loadPosts();
+        const { loadPosts } = this.props;
+    
+        loadPosts();
+    
+        window.addEventListener('scroll', this.handleScroll);
+    }
+  
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
     }
 
     render() {
@@ -34,7 +51,7 @@ function mapStateToProps(state, props) {
 function mapDisatchToProps(dispatch, props) {
     return {
         ...props,
-        loadPosts: () => load(dispatch),
+        loadPosts: () => dispatch(load()),
     }
 }
 

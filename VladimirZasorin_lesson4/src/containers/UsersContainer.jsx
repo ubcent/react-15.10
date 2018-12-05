@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import List from 'components/List';
 import { load } from 'actions/users';
-
 import ErrorBoundary from 'components/ErrorBoundary';
 
 class UsersContainer extends Component {
     componentDidMount() {
-        this.props.loadUsers();
+        const { loadUsers } = this.props;
+        loadUsers();
     }
 
     render() {
@@ -35,7 +35,7 @@ function mapStateToProps(state, props) {
 function mapDisatchToProps(dispatch, props) {
     return {
         ...props,
-        loadUsers: () => load(dispatch),
+        loadUsers: () => dispatch(load()),
     }
 }
 

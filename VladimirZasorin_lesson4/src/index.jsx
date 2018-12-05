@@ -14,6 +14,7 @@ import ElementContainer from 'containers/ElementContainer';
 import ArticlesContainer from 'containers/ArticlesContainer';
 import CommentsContainer from 'containers/CommentsContainer';
 import UsersContainer from 'containers/UsersContainer';
+import MessagesContainer from 'containers/MessagesContainer';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './style.css';
@@ -70,11 +71,12 @@ class App extends Component {
                 </div>
                 <Switch>
                     <Route path='/' exact component={ Home } />
-                    <PrivateRoute path='/posts' exact component={ ArticlesContainer } isLogin={ isLogin } />
-                    <PrivateRoute path='/comments' exact component={ CommentsContainer } isLogin={ isLogin } />
-                    <PrivateRoute path='/users' exact component={ UsersContainer } isLogin={ isLogin } />
+                    <Route path='/posts' exact component={ ArticlesContainer } isLogin={ isLogin } />
+                    <Route path='/comments' exact component={ CommentsContainer } isLogin={ isLogin } />
+                    <Route path='/users' exact component={ UsersContainer } isLogin={ isLogin } />
                     <PrivateRoute path='/users/:id' exact component={ ElementContainer } isLogin={ isLogin } />
                     <PrivateRoute path='/posts/:id' exact component={ ElementContainer } isLogin={ isLogin } />
+                    <Route path='/chats' exact component={ MessagesContainer } isLogin={ isLogin } />
                     <Route path='/login' exact render={ props => <Login { ...props } onLogin={ this.toggleModal } /> }/>
                     <Route path='/logout' exact render={ props => <Logout { ...props } onLogout={ this.logout } /> }/>
                     <Route component={ NotFound } />
