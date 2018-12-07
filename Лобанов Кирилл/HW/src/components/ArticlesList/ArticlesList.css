@@ -1,0 +1,11 @@
+.ArticlesList {
+  margin-right: 66px;
+}
+
+.article-border-bottom {
+  border-bottom: 1px solid #929eb2;
+}
+
+.article-border-bottom:last-child {
+  border-bottom: none;
+}
