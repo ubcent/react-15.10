@@ -2,8 +2,7 @@ import React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {Container, Row, Col} from 'reactstrap';
-import { Provider } from 'react-redux';
-
+import {Provider} from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,10 +12,8 @@ import routes from './routes';
 import store from './store';
 
 const items = [
-    {href: '#', title: 'Home'},
-    {href: '#', title: 'About'},
-    {href: '#', title: 'Services'},
-    {href: '#', title: 'Contact'},
+    {href: '/', title: 'Главная'},
+    {href: '/messages', title: 'Сообщения'},
 ];
 
 class App extends Component {

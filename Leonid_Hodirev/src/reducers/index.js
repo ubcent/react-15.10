@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import postsReducer from './posts';
+import messagesReducer from './messages';
 
 export default combineReducers({
-    comments: postsReducer,
+    posts: postsReducer,
+    messages: messagesReducer,
 });
