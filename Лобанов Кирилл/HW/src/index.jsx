@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
+
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
@@ -18,6 +19,7 @@ import Home from './components/Home';
 import CommentsContainer from 'containers/CommentsContainer';
 
 import routes from './routes';
+
 import store from './store';
 
 const itemsMenu = [
@@ -29,8 +31,6 @@ const itemsMenu = [
 
 
 class App extends Component {
-
-
   render() {
     return (
       <Fragment>
@@ -54,4 +54,5 @@ class App extends Component {
 
 ReactDom.render(
   <Provider store={store}><BrowserRouter><App/></BrowserRouter></Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);

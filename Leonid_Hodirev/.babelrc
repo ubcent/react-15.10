@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "env",
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "transform-decorators-legacy"
+  ]
+}
+//npm install babel-plugin-transform-decorators-legacy --save-dev

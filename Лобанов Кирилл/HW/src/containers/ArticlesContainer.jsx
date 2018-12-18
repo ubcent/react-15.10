@@ -1,23 +1,14 @@
 import React, {Component, Fragment} from 'react';
+
 import { connect } from 'react-redux';
 
 import ArticlesList from 'components/ArticlesList';
 import {load} from 'actions/articles';
 
 class ArticlesContainer extends Component {
-
-  // handleScroll = () => {
-  //   if (document.documentElement.clientHeight - window.scrollY - window.innerHeight === 0) {
-  //     if (!this.state.loading) {
-  //       this.loadArticles();
-  //     }
-  //   }
-  // };
-
   componentDidMount() {
- const { loadArticles } = this.props;
- loadArticles();
-    // window.addEventListener('scroll', this.handleScroll);
+    const { loadArticles } = this.props;
+    loadArticles();
   }
 
   render () {
@@ -31,6 +22,7 @@ class ArticlesContainer extends Component {
     )
   }
 }
+
 function mapStateToProps(state, props) {
   return{
     ...props,
@@ -45,6 +37,5 @@ function mapDispatchToProps(dispatch, props) {
     loadArticles: () => load(dispatch),
   }
 }
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(ArticlesContainer);

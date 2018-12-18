@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+
 import { connect } from 'react-redux';
 
 import CommentsList from 'components/CommentsList';
@@ -36,6 +37,7 @@ class CommentsContainer extends Component {
     )
   }
 }
+
 function mapStateToProps(state, props) {
 return{
   ...props,
