@@ -17,9 +17,7 @@ export default class BlogList extends Component {
    * Обрабатывает клик по кнопке "Open"/"Close", передает нужное состояние компоненту отдельного блога
    * @param {int} openBlogId - id открытой карточки блога (при инициализации = 1)
    */
-  handleClick = openBlogId => {
-    console.log(this.props);
-
+  handleClick = openBlogId =>() => {
     this.setState({
       openBlogId: this.state.openBlogId === openBlogId ? null : openBlogId,
     })
@@ -34,7 +32,8 @@ export default class BlogList extends Component {
         {posts.map((post) =>
           <Blog key={post.id} post={post}
             isOpen = {this.state.openBlogId === post.id}
-            onButtonClick = {this.handleClick.bind(null, post.id)}
+            data-id ={post.id}
+            onButtonClick = {this.handleClick(post.id)}
           />)}
       </ul>
     )

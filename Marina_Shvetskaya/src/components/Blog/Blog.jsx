@@ -8,7 +8,6 @@ export default class Blog extends Component {
 
    render() {
     const { post, isOpen, onButtonClick } = this.props;
-     console.log(this.props);
      const cardBody = isOpen && (
     <CardBody>
       <CardTitle><Link to={`/users/${post.id}/${post.userId}`}>{post.title}</Link></CardTitle>

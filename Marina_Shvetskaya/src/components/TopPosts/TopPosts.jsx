@@ -14,7 +14,7 @@ export default class TopPosts extends Component {
   };
 
   render() {
-    const {posts} = this.props;
+    const { posts } = this.props;
     return (
         <div>
           <Card className="pb-3 mb-3">

@@ -3,7 +3,7 @@ import './Menu.css';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
-import {Link, withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 @withRouter
 export default class Menu extends Component {
@@ -37,7 +37,7 @@ export default class Menu extends Component {
     return (
       <Fragment>
         <Navbar color="light" light expand="md">
-          <NavbarBrand className="text-primary" style={{'fontWeight': 'bold'}}>{titleBlog}</NavbarBrand>
+          <NavbarBrand className="text-primary font-weight-bold">{titleBlog}</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

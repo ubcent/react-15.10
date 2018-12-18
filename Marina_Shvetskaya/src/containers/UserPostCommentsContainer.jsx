@@ -15,18 +15,19 @@ export default class UserPostCommentsContainer extends Component {
     this.state = {
       loading: true,
       user: {},
-      userPost: {},
+      userPosts: {},
       postComments: [],
     }
   }
 
   /**
-   * Загружает информацию о пользователе по id пользователя
+   * Загружает данные для поста пользователя с комментариями
    */
-  loadUser() {
+  loadData() {
     this.setState({
       loading: true,
     });
+
     fetch(`https://jsonplaceholder.typicode.com/users/${this.userId}`)
       .then((response) => response.json())
       .then((user) => {
@@ -38,35 +39,19 @@ export default class UserPostCommentsContainer extends Component {
       .catch(() => {
         this.setState({loading: false});
       });
-  };
 
-  /**
-   * Загружает пост пользователя по id поста
-   */
-  loadUserPost() {
-    this.setState({
-      loading: true,
-    });
     fetch(`https://jsonplaceholder.typicode.com/posts/${this.postId}`)
       .then((response) => response.json())
-      .then((userPost) => {
+      .then((userPosts) => {
         this.setState({
           loading: false,
-          userPost,
-        });
+          userPosts,
+        })
       })
       .catch(() => {
         this.setState({loading: false});
       });
-  };
 
-  /**
-   * Загружает комментарии к посту пользователя
-   */
-  loadPostComments() {
-    this.setState({
-      loading: true,
-    });
     fetch(`https://jsonplaceholder.typicode.com/comments?postId=${this.postId}`)
       .then((response) => response.json())
       .then((postComments) => {
@@ -78,15 +63,13 @@ export default class UserPostCommentsContainer extends Component {
       .catch(() => {
         this.setState({loading: false});
       });
-  };
+  }
 
   /**
    * Вызывает методы для получения из хранилища информации
    */
   componentDidMount() {
-    this.loadUser();
-    this.loadUserPost();
-    this.loadPostComments();
+    this.loadData();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -96,18 +79,16 @@ export default class UserPostCommentsContainer extends Component {
       this.setState({
         postComments: []
       });
-      this.loadUser();
-      this.loadUserPost();
-      this.loadPostComments();
+      this.loadData();
     }
   }
 
   render() {
-    const {loading, user, userPost, postComments} = this.state;
+    const {loading, user, userPosts, postComments} = this.state;
 
     return (
       <Fragment>
-        <UserPostCommentsWrap user={user} userPost={userPost} />
+        <UserPostCommentsWrap user={user} userPosts={userPosts}/>
         <UserPostComments postComments={postComments}/>
         {loading ? 'loading' : ''}
       </Fragment>

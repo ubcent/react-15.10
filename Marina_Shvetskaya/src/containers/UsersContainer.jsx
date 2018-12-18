@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
 import UsersList from 'components/UsersList';
-import PropTypes from 'prop-types';
 
 // Контейнер с логикой рендеринга страницы "Пользователи"
 export default class UsersContainer extends Component {

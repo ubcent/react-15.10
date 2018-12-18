@@ -1,14 +1,14 @@
 import './UserPostCommentsWrap.css';
 
 import React, {Fragment} from 'react';
-import { Card, CardHeader, CardText, CardTitle } from 'reactstrap';
-import UserPostComments from "components/UserPostComments";
-import {Link} from "react-router-dom";
+import {Card, CardHeader, CardText, CardTitle} from 'reactstrap';
+import UserPostComments from 'components/UserPostComments';
+import {Link} from 'react-router-dom';
 
 // Компонент блока поста отдельного пользователя с комментариями
-export default function(props) {
+export default function (props) {
   const {name, username} = props.user;
-  const {id, title, body} = props.userPost;
+  const {id, title, body} = props.userPosts;
 
   return (
     <Fragment>
@@ -17,7 +17,7 @@ export default function(props) {
           <CardTitle className="text-primary float-left">
             Post #{id} of user {name} (nickname: {username})
           </CardTitle>
-          <Link to={'/users'} className="btn btn-primary float-right">Назад</Link>
+          <Link to="/users" className="btn btn-primary float-right">Назад</Link>
         </CardHeader>
         <CardHeader>
           <CardTitle>{title}</CardTitle>

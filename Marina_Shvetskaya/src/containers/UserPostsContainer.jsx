@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import UserPosts from 'components/UserPosts';
 
@@ -13,13 +13,14 @@ export default class UserPostsContainer extends Component {
     this.state = {
       loading: true,
       userPosts: [],
-    }
+    };
   }
 
   /**
    * Загружает посты пользователя из хранилища
    */
   componentDidMount() {
+
     this.setState({
       loading: true,
     });

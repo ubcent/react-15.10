@@ -27,7 +27,7 @@ export default [
     component: UsersContainer,
   },
   {
-    path: '/comments/:id',
+    path: '/users/:id',
     exact: true,
     component: CommentContainer,
   },
