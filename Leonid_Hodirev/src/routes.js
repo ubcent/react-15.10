@@ -1,5 +1,6 @@
 import PostContainer from 'containers/PostContainer';
 import PostsContainer from 'containers/PostsContainer';
+import MessagesContainer from 'containers/MessagesContainer';
 
 export default [
     {
@@ -11,5 +12,10 @@ export default [
         path: '/post/:id',
         exact: true,
         component: PostContainer,
+    },
+    {
+        path: '/messages',
+        exact: true,
+        component: MessagesContainer,
     }
 ];
