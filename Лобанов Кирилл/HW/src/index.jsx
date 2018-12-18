@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Provider} from 'react-redux';
 
 import './normalize.css';
 import './bootstrap.css';
@@ -18,6 +20,8 @@ import CommentsContainer from 'containers/CommentsContainer';
 
 import routes from './routes';
 
+import store from './store';
+
 const itemsMenu = [
   {href: '/', title: 'Home'},
   {href: '/blog', title: 'Blog'},
@@ -27,9 +31,6 @@ const itemsMenu = [
 
 
 class App extends Component {
-
-
-
   render() {
     return (
       <Fragment>
@@ -52,5 +53,6 @@ class App extends Component {
 }
 
 ReactDom.render(
-  <BrowserRouter><App /></BrowserRouter>,
-  document.getElementById('root'));
+  <Provider store={store}><BrowserRouter><App/></BrowserRouter></Provider>,
+  document.getElementById('root')
+);

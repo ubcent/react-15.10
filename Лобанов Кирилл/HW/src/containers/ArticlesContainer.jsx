@@ -1,51 +1,18 @@
 import React, {Component, Fragment} from 'react';
 
+import { connect } from 'react-redux';
+
 import ArticlesList from 'components/ArticlesList';
+import {load} from 'actions/articles';
 
-export default class ArticlesContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: true,
-      articles: [],
-      page: 1,
-    }
-  }
-
-  loadArticles = () => {
-    const {page} = this.state;
-    this.setState({loading: true});
-    fetch(`http://jsonplaceholder.typicode.com/posts?_limit=10&_page=${page}`)
-      .then((response) => response.json())
-      .then((articles) => {
-        this.setState({
-          page: this.state.page++,
-          loading: false,
-          articles: this.state.articles.concat(articles),
-        })
-      })
-      .catch(() => {
-        this.setState({loading: false});
-      });
-  };
-
-
-  handleScroll = () => {
-    if (document.documentElement.clientHeight - window.scrollY - window.innerHeight === 0) {
-      if (!this.state.loading) {
-        this.loadArticles();
-      }
-    }
-  };
-
+class ArticlesContainer extends Component {
   componentDidMount() {
-    this.loadArticles();
-    window.addEventListener('scroll', this.handleScroll);
+    const { loadArticles } = this.props;
+    loadArticles();
   }
 
   render () {
-    const { loading, articles } = this.state;
+    const { loading, articles } = this.props;
 
     return (
       <Fragment>
@@ -55,3 +22,20 @@ export default class ArticlesContainer extends Component {
     )
   }
 }
+
+function mapStateToProps(state, props) {
+  return{
+    ...props,
+    articles: state.articles.entities,
+    loading: state.articles.loading,
+  }
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return{
+    ...props,
+    loadArticles: () => load(dispatch),
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ArticlesContainer);
