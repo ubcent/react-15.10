@@ -4,14 +4,20 @@ const HtmlWP = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
-		main: path.resolve(__dirname, 'src/js', 'index.jsx'),
+		main: path.resolve(__dirname, 'src', 'index.jsx'),
 	},
 	output: {
-		path: path.resolve(__dirname, 'public'),
+		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
 	},
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: ['.js', '.jsx'],
+		alias: {
+			components: path.resolve(__dirname, 'src', 'components'),
+			containers: path.resolve(__dirname, 'src', 'containers'),
+			reducers: path.resolve(__dirname, 'src', 'reducers'),
+			actions: path.resolve(__dirname, 'src', 'actions'),
+		},
 	},
 	module: {
 		rules: [
